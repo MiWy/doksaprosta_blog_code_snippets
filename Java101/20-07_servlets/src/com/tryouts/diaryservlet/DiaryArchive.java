@@ -18,11 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/DiaryArchive")
 public class DiaryArchive extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	private static final String DB_URL = "jdbc:mysql://localhost:3306/diary";
-    private static final String USER = "root";
-    private static final String PASS = "root";
+    	private static final String USER = "root";
+    	private static final String PASS = "root";
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -38,16 +37,17 @@ public class DiaryArchive extends HttpServlet {
 				"<head><title>" + title + "</title></header>\n" +
 				"<body bgcolor = \"#f3f3f3\">\n" +
 				"<h1 align = \"center\">" + title + "</h1>\n" +
-				"<h3 align = \"center\"><a href=\"http://localhost:8080/DiaryServlet/DiaryMain.html\">Add new entry</a></h3>");
+				"<h3 align = \"center\"><a href=\"http://localhost:8080/DiaryServlet/DiaryMain.html\">"+
+			    	"Add new entry</a></h3>");
 		
 		try {	
 			// Rejestrujemy sterownik.
 			Class.forName(JDBC_DRIVER);
 			
-		    // Podłączamy się do naszej bazy MySQL
+		    	// Podłączamy się do naszej bazy MySQL
 			Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
 			
-		    // Przygotowujemy zapytanie do bazy oraz obiekt klasy ResultSet z danymi zwrotnymi.
+		   	// Przygotowujemy zapytanie do bazy oraz obiekt klasy ResultSet z danymi zwrotnymi.
 			Statement stmt = con.createStatement();
 			String sql = "SELECT id, date, title, content FROM ENTRIES";
 			ResultSet rs = stmt.executeQuery(sql);
@@ -65,7 +65,8 @@ public class DiaryArchive extends HttpServlet {
 			}
 			out.println("</body></html>");
 			
-		    // Zamykamy połączenia z bazą danych (dla przejrzystości przykładu zakładamy, że nie wystąpią w tym miejscu wyjątki).	
+		    	// Zamykamy połączenia z bazą danych (dla przejrzystości przykładu 
+			// zakładamy, że nie wystąpią w tym miejscu wyjątki).	
 			rs.close();
 			stmt.close();
 			con.close();
