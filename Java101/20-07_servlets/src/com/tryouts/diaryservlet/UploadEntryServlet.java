@@ -16,11 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/DiaryNew")
 public class UploadEntryServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	private static final String DB_URL = "jdbc:mysql://localhost:3306/diary";
-    private static final String USER = "root";
-    private static final String PASS = "root";
+    	private static final String USER = "root";
+    	private static final String PASS = "root";
        
    
 	
